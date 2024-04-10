@@ -5,18 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <DockPanel>
-        <Button x:Name="btnOk" Content="Button" Width="100" Height="67" Click="Button_Click" HorizontalAlignment="Center"/>
-        <DataGrid x:Name="dgData" Width="448" d:ItemsSource="{d:SampleData ItemCount=5}" Height="212">
-            <UIElement.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </UIElement.RenderTransform>
-        </DataGrid>
-    </DockPanel>
+        Title="MainWindow" Height="539" Width="800">
+    <Grid Margin="0,0,0,-6">
+        <DataGrid x:Name="dgData" d:ItemsSource="{d:SampleData ItemCount=4}" Margin="38,37,338,180" SelectionChanged="dgData_SelectionChanged"/>
+        <Button x:Name="create_btn" Content="чтение" HorizontalAlignment="Left" Margin="38,388,0,0" VerticalAlignment="Top" Height="24" Width="62" Click="Button_Click_1"/>
+        <Button x:Name="delete_button" Content="удалить элемент" HorizontalAlignment="Left" Margin="119,390,0,0" VerticalAlignment="Top" Height="22" Width="107" Click="Button_Click"/>
+
+    </Grid>
 </Window>
