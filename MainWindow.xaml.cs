@@ -40,8 +40,22 @@ namespace WpfApp1
             dgData.ItemsSource = products;
         }
 
-        private void delete_button_Click(object sender, RoutedEventArgs e)
+        private async void delete_button_Click(object sender, RoutedEventArgs e)
         {
+            Product selectedProduct = (Product)dgData.SelectedItem;
+            if (selectedProduct != null) 
+            {
+
+                using (var context = new KotyaDbContext(optionsBuilder.Options))
+                {
+                    context.Products.Remove(selectedProduct);
+                    await context.SaveChangesAsync();
+                }
+                var products = (List<Product>)dgData.ItemsSource;
+                products.Remove(selectedProduct);
+                dgData.ItemsSource = null;
+                dgData.ItemsSource = products;
+            }
 
         }
     }
