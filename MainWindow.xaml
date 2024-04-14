@@ -7,9 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="539" Width="800">
     <Grid Margin="0,0,0,-6">
-        <DataGrid x:Name="dgData" d:ItemsSource="{d:SampleData ItemCount=4}" Margin="38,37,338,180"/>
+
+        <DataGrid x:Name="dgData" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="38,37,338,180"/>
         <Button x:Name="create_btn" Content="чтение" HorizontalAlignment="Left" Margin="38,388,0,0" VerticalAlignment="Top" Height="24" Width="62" Click="Create_btn_Click"/>
         <Button x:Name="delete_button" Content="удалить элемент" HorizontalAlignment="Left" Margin="119,390,0,0" VerticalAlignment="Top" Height="22" Width="107" Click="delete_button_Click" />
+        <Button Content="Добавить" HorizontalAlignment="Left" Margin="250,390,0,0" VerticalAlignment="Top" Height="22" Width="77" Click="AddBtn_Click"/>
 
     </Grid>
 </Window>

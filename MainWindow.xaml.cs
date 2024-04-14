@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Microsoft.EntityFrameworkCore; // фикс подчеркивания говна
+using Microsoft.EntityFrameworkCore;
+
 
 
 namespace WpfApp1
@@ -56,6 +57,21 @@ namespace WpfApp1
                 dgData.ItemsSource = null;
                 dgData.ItemsSource = products;
             }
+
+        }
+        private async void RefreshData()
+        {
+            using (var context = new KotyaDbContext(optionsBuilder.Options))
+            {
+                var products = await context.Products.ToListAsync();
+                dgData.ItemsSource = products;
+            }
+        }
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Window1 window1 = new Window1();
+            window1.ShowDialog();
+            RefreshData();
 
         }
     }

@@ -10,6 +10,12 @@ namespace WpfApp1
     {
         public KotyaDbContext(DbContextOptions<KotyaDbContext> options) : base(options) { }
         public DbSet<Product> Products { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Product>()
+                .Property(p => p.CreatedAt)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -23,5 +29,6 @@ namespace WpfApp1
         public int Id { get; set; }
         public string Name { get; set; }
         public decimal price { get; set; }
+        public DateTime CreatedAt { get; set; }
     }
 }
